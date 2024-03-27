@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    char value;
+    double firstnum, secondnum, total; //Calculator should be able to calculate 2 numbers
+
+
+        cout<<"Choose an operation"<<endl;
+        cout<<"+ for Addition"<<endl;
+        cout<<"- for Substraction"<<endl;
+        cout<<"/ for Division"<<endl;
+        cout<<"* for Multiplication"<<endl;
+        cout<<"f to exit calculator"<<endl;
+        cout<<"Please choose an operation: "<<endl;
+        cin>>value; 
+
+     while(value != 'f') //if the value isn't f then it would ask for two values, but if the user inputs f it would terminate the calculator
+     {
+            cout<<"Please enter a value:  "<<endl; //Will ask user to input first number, then it will do another line adn ask for a second number
+            cin>>firstnum;
+            cout<<"Please enter a second value"<<endl;
+            cin>>secondnum;
+//The main challenge that i had was the part above...
+//whenever i would run the code, then enter 'f' it would run perfectly, but when i tried re-running it to put a different operator
+//it would spam...none stop.
+        switch(value)
+        {
+            case '+': //Firgured out why it wasn't correctly calculating. It was because i forgot to but the numbers in quotation ' ' marks
+                total = firstnum + secondnum; //using the switch statement to match the operation signs to a certain number
+                cout<<"The total is: "<<total<<endl;
+                break;
+            case '-':
+                total = firstnum - secondnum;
+                cout<<"The total is: "<<total<<endl;
+                break;
+            case '/':
+                if(secondnum != 0) //if the second number is not 0 then it will continue and calculte but if it is it will go to the else statement
+                {
+                    total = firstnum / secondnum;
+                    cout<<"The total is: "<<total<<endl;
+                }
+                else
+                {
+                    cout<<"Error! Division by Zero!"<<endl;
+                    continue; // it will continue to give the user another opportunity to put in the correct value
+                }
+                break;
+
+            case '*':
+                total = firstnum * secondnum;
+                cout<<"The total is: "<<total<<endl;
+                break; 
+        
+            default:
+                cout<<"Wrong value! Please enter a correct operator: "<<endl; //If the user inputs a number that is not defined, then it would give this msg
+        }
+        cout<<"Total: "<< firstnum <<" "<< value <<" " << secondnum << "="<< total <<endl;
+
+        cout<<"Do you want to perform another operation? (Press f to exit or any other value to continue)"; //after each calculation and total, it will replay this msg, and the user will be able to choose another operator until they press f
+        cin >> value;
+     }
+     cout<<"Calculator is now terminating...BYEBYE"<<endl; //User will receive this msg if they press 'f'
+     return 0;
+}
+        //I got it to stop spamming 'choose an operation' msg. It honestly wasn't a difficult assignment , but the finding where the issue was located 
+        //took a very longtime. Figured it out in the end, so all is well!:)//
